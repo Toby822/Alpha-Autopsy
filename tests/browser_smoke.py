@@ -13,7 +13,7 @@ ROOT=Path(__file__).resolve().parents[1]
 def main():
     try:
         with sync_playwright() as p:
-            browser=p.chromium.launch(headless=True,executable_path='/usr/bin/chromium',args=['--no-sandbox','--disable-dev-shm-usage','--disable-background-networking'])
+            browser=p.chromium.launch(headless=True,args=['--no-sandbox','--disable-dev-shm-usage','--disable-background-networking'])
             page=browser.new_page(viewport={'width':1500,'height':940},accept_downloads=True)
             errors=[];page.on('pageerror',lambda e:errors.append(str(e)))
             # Network-free in-memory browser test. The host environment blocks even
